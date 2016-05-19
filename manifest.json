@@ -1,0 +1,26 @@
+{
+  "name": "Habitica ToDo",
+  "version": "1.1",
+  "manifest_version": 2,
+  "browser_action": {
+    "name": "Make into a Habitica ToDo"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "24": "images/icon24.png",
+    "32": "images/icon32.png",
+    "64": "images/icon64.png",
+    "128": "images/icon128.png",
+    "256": "images/icon256.png",
+    "512": "images/icon512.png"
+  },
+  "options_page": "options.html",
+  "background":{
+      "scripts":["post.js"]
+  },
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "storage"
+  ]
+ }

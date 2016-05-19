@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Set Habitica ToDo Options</title>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    * {
+      font-family: 'Open Sans', sans-serif;
+    }
+    #wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      text-transform: uppercase;
+      color: #797979;
+      font-size: large;
+      font-weight: 100;
+      width: 100%;
+    }
+    input[type="text"],
+    select {
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      outline: none;
+      display: block;
+      width: 400px;
+      padding: 7px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      background: transparent;
+      margin-bottom: 10px;
+      font-family: 'Open Sans', sans-serif;
+      height: 45px;
+    }
+    button {
+      -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+      -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+      box-shadow: inset 0px 1px 0px 0px #45D6D6;
+      background-color: #2CBBBB;
+      border: 1px solid #27A0A0;
+      display: inline-block;
+      cursor: pointer;
+      color: #FFFFFF;
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-size: 18px;
+      padding: 8px 18px;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    button:hover {
+      background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+      background-color:#34CACA;
+    }
+</style>
+</head>
+<body>
+
+<div id='wrapper'>
+
+
+<table>
+  <tr>
+    <td colspan="2"><center><h1>Habitica To-Do Settings</h1></center></td>
+  </tr>
+  <tr>
+    <td colspan="2"><center>Get your <a href='https://habitica.com/#/options/settings/api' target='_blank'>User ID and API Token from here.</a></center></td>
+  </tr>
+  <tr>
+    <td><label for="user_id">User ID</label></td>
+    <td><input type="text" id="user_id" /></td>
+  </tr>
+  <tr>
+    <td><label for="api_token">API Token</label></td>
+    <td><input type="text" id="api_token" /></td>
+  </tr>
+  <tr>
+    <td><label for="difficulty">Difficulty</label></td>
+    <td>
+      <select id="difficulty">
+        <option value="0.1">Trivial</option>
+        <option value="1" selected>Easy</option>
+        <option value="1.5">Medium</option>
+        <option value="2">Hard</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2"><button id="save">Save</button></td>
+  </tr>
+
+  <tr>
+  <td colspan="2"><h1><center><div id="status"></div></center></h1></td>
+  </tr>
+</table>
+
+
+
+
+
+<script src="options.js"></script>
+
+</div>
+
+</body>
+</html>
