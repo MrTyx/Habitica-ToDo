@@ -1,0 +1,41 @@
+<table id="input_table">
+  <tr>
+    <td>Due Date</td>
+    <td><input type="text" id="date"></td>
+  </tr>
+
+  <tr>
+    <td>Title</td>
+    <td><input type="text" id="title" /></td>
+  </tr>
+
+  <tr>
+    <td>URL</td>
+    <td><input type="text" id="url" /></td>
+  </tr>
+
+  <tr>
+    <td><label for="difficulty">Difficulty</label></td>
+    <td>
+      <div id="difficulty_radios">
+        <input type="radio" id="difficulty_trivial" name="difficulty" value="trivial">
+        <label for="difficulty_trivial">Trivial</label>
+    
+        <input type="radio" id="difficulty_easy" name="difficulty" value="easy">
+        <label for="difficulty_easy">Easy</label>
+    
+        <input type="radio" id="difficulty_medium" name="difficulty" value="medium">
+        <label for="difficulty_medium">Medium</label>
+    
+        <input type="radio" id="difficulty_hard" name="difficulty" value="hard">
+        <label for="difficulty_hard">Hard</label>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <button type="button" id="send_button">Send to Habitica</button>
+    </td>
+  </tr>
+</table>
