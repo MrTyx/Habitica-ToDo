@@ -43,7 +43,13 @@ function prepare_form(items) {
     $("input:radio[name=difficulty]").filter("[value="+items.habitica_todo_difficulty+"]")
                                      .trigger("click");
     $("#date").datepicker({
-      dateFormat: "yy/mm/dd"
+      dateFormat: "yy/mm/dd",
+/*      beforeShow: function (textbox, instance) {
+        instance.dpDiv.css({
+          //marginTop: (textbox.offsetHeight) + 'px'
+          //marginTop: (-textbox.offsetHeight) + 'px'
+        });
+      }*/
     });
 
     $("#send_button").on("click", function() {
@@ -60,16 +66,18 @@ function post_data(items){
 
   // Remove ] and ) where it would break Habitica markdown
   var url   = items.tab_url.split(')').join('%29');
-  var title = items.tab_title.split(']').join('\]');
+  var title = items.tab_title.split(']').join('\]')
+                             .split('[').join('\[');
 
 
   xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://habitica.com:443/api/v2/user/tasks", true);
+  //xhr.open("POST", "https://habitica.com:443/api/v2/user/tasks", true);
+  xhr.open("POST", "https://habitica.com/api/v3/tasks/user", true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.setRequestHeader("x-api-user", items.habitica_todo_user_id);
   xhr.setRequestHeader("x-api-key", items.habitica_todo_api_token);
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+    if (xhr.readyState == 4) {
       new Audio('sounds/success_1.mp3').play();
       setTimeout(function(){ window.close(); }, 1000);
     } else {
@@ -85,7 +93,7 @@ function post_data(items){
     default: difficulty        = 1;   break;
   }
   xhr.send(JSON.stringify({
-    "text": "["+title+"]("+url+")",
+    "text": "["+title+"]("+url+" )",
     "type":"todo",
     "value":"0",
     "priority": difficulty,
