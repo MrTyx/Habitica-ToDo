@@ -1,9 +1,9 @@
 {
   "name": "Habitica ToDo",
-  "version": "2.1",
+  "version": "2.2",
   "manifest_version": 2,
   "browser_action": {
-    "name": "Make into a Habitica ToDo",
+    "name": "Make current tab url a Habitica ToDo",
     "default_popup": "index.html"
   },
   "icons": {

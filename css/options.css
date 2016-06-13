@@ -18,7 +18,7 @@ h1 {
 
 td {
   padding-left: 10px;
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
 }
 
 input[type="text"],
@@ -38,8 +38,9 @@ select {
   height: 45px;
 }
 
-#difficulty_radios   .ui-button { width: 100px; }
-#show_options_radios .ui-button { width: 100px; }
+#difficulty_radios    .ui-button { width: 100px; }
+#show_options_radios  .ui-button { width: 100px; }
+#autoclose_tab_radios .ui-button { width: 100px; }
 
 button {
   -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
