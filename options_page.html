@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<head>
+  <title>Set Habitica ToDo Options</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href="jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+  <link href="css/options_page.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+  <div id='wrapper'>
+    <div id='left_pane'>
+      <h1>QUESTIONS</h1>
+      <ul>
+
+        <li>
+          <span class='question'>
+            Where can I find my User ID and API Token?
+          </span><br>
+          <span class='answer'>
+            <a href="https://habitica.com/#/options/settings/api" target="_blank">Follow this link</a>.
+            Copy and paste into here. Don't forget, your API token is basically a
+            password.
+          </span>
+        </li>
+
+        <li>
+          <span class='question'>
+            I want source code.
+          </span><br>
+          <span class='answer'>
+            <a href='https://github.com/MrTyx/Habitica-ToDo'>Click here</a>. Laugh
+            at my coding conventions.
+          </span>
+        <li>
+          <span class='question'>
+            Why do I keep seeing this Options Page?
+          </span><br>
+          <span class='answer'>
+            I have been actively developing this addon. When I add a new feature,
+            you will need to set a default. Long story short, it is because of error
+            checking and feature creep.
+          </span>
+        </li>
+
+
+        <li>
+          <span class='question'>
+            Help! I am getting error messages with status code 401!
+          </span><br>
+          <span class='answer'>
+            Double check that you have your username and API token set correctly. If
+            you are not authenticated, then obviously this app will not work. If it
+            is correct, then take a moment to mutter curses at MrTyx for
+            insulting your intelligence by implying you would screw up a username
+            and password.
+          </span>
+        </li>
+
+        <li>
+          <span class='question'>
+            Help! I am getting error messages with status code 0!
+          </span><br>
+          <span class='answer'>
+            Check you are connected to the internet. If you are on a work or university
+            connection, it is possible that Habitica is blocked by a firewall for being
+            "Games". If that is the case, try bribing your local sysadmin with whiskey and brownies.
+          </span>
+        </li>
+
+        <li>
+          <span class='question'>
+            I have opinions, feature requests and/or bug reports!
+          </span><br>
+          <span class='answer'>
+            Write to me at <a href="mailto:camerontyrel@gmail.com">camerontyrel@gmail.com</a>
+            and we will see what we can do. If it something worthwhile, I'll make
+            some time.
+          </span>
+        </li>
+
+        <li>
+          <span class='question'>
+            Who is the most beautiful woman in the whole world?
+          </span><br>
+          <span class='answer'>
+            Mrs Tyx, who is a wonderful woman and I love her dearly.
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div id='right_pane'>
+      <table>
+        <tr>
+          <td colspan="2">
+            <h1>SETTINGS</h1>
+          </td>
+        </tr>
+
+        <tr>
+          <td>User ID</td>
+          <td><input type="text" id="user_id" /></td>
+        </tr>
+
+        <tr>
+          <td>API Token</td>
+          <td><input type="text" id="api_token" /></td>
+        </tr>
+
+        <tr>
+          <td>Default Difficulty</td>
+          <td>
+            <div id="difficulty_radios">
+              <input type="radio" id="difficulty_trivial" name="difficulty" value="trivial">
+              <label for="difficulty_trivial">Trivial</label>
+
+              <input type="radio" id="difficulty_easy" name="difficulty" value="easy" checked>
+              <label for="difficulty_easy">Easy</label>
+
+              <input type="radio" id="difficulty_medium" name="difficulty" value="medium">
+              <label for="difficulty_medium">Medium</label>
+
+              <input type="radio" id="difficulty_hard" name="difficulty" value="hard">
+              <label for="difficulty_hard">Hard</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Show Options Window</td>
+          <td>
+            <div id="show_options_radios">
+              <input type="radio" id="show_options_yes" name="show_options" value="yes" checked>
+              <label for="show_options_yes">Yes</label>
+
+              <input type="radio" id="show_options_no" name="show_options" value="no">
+              <label for="show_options_no">No</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Autoclose Tab</td>
+          <td>
+            <div id="autoclose_tab_radios">
+              <input type="radio" id="autoclose_tab_yes" name="autoclose_tab" value="yes" checked>
+              <label for="autoclose_tab_yes">Yes</label>
+
+              <input type="radio" id="autoclose_tab_no" name="autoclose_tab" value="no">
+              <label for="autoclose_tab_no">No</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><button id="save">Save Settings</button></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><h1><center><div id="status"></div></center></h1></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+  <script src="js/options_page.js"></script>
+
+</body>
+</html>

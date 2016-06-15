@@ -1,10 +1,11 @@
 {
   "name": "Habitica ToDo",
-  "version": "2.2",
+  "author": "MrTyx",
+  "version": "2.3",
   "manifest_version": 2,
   "browser_action": {
     "name": "Make current tab url a Habitica ToDo",
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   },
   "icons": {
     "16": "images/icon16.png",
@@ -15,7 +16,7 @@
     "256": "images/icon256.png",
     "512": "images/icon512.png"
   },
-  "options_page": "options.html",
+  "options_page": "options_page.html",
   "permissions": [
     "<all_urls>",
     "tabs",

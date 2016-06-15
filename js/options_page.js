@@ -42,14 +42,9 @@ $("#save").on("click", function() {
     "habitica_todo_autoclose_tab": autoclose_tab
   }, function() {
     if (chrome.runtime.error) {
-      $("#status").finish()
-                  .show()
-                  .text(chrome.runtime.error);
+      $("#status").finish().show().text(chrome.runtime.error);
     } else {
-      $("#status").finish()
-                  .show()
-                  .text("Successfully saved your user settings.")
-                  .fadeOut(3000);
+      $("#status").finish().show().text("Successfully saved your user settings.").fadeOut(3000);
     };
   });
 });

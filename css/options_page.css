@@ -1,0 +1,116 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #4b4377;
+  margin: 0px;
+  padding: 0px;
+}
+
+#wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#left_pane {
+  margin-right: 50px;
+  width: 400px;
+  height: auto;
+  padding: 0px 20px;
+}
+
+#left_pane h1 {
+  text-align: center;
+  color: #FFF;
+  font-weight: 100;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+#left_pane ul {
+  list-style-type:none;
+}
+
+#left_pane li {
+  margin: 10px;
+}
+#left_pane .question {
+  color: #FFF;
+  font-weight: bold;
+}
+
+#left_pane .answer,
+#left_pane .answer a {
+  color: #DDD;
+}
+
+#right_pane {
+  background-color: #4b4377;
+  width: 500px;
+  height: auto;
+  background: #f4f4f4;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#right_pane h1 {
+  text-align: center;
+}
+
+
+td {
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+input[type="text"],
+select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 300px;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  height: 45px;
+}
+
+/*#difficulty_radios    .ui-button { width: 80px; }*/
+#show_options_radios  .ui-button { width: 80px; }
+#autoclose_tab_radios .ui-button { width: 80px; }
+
+
+button {
+  background-color: #4b4377;
+  border: 1px solid #27A0A0;
+  display: inline-block;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  padding: 8px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 25px;
+}
+
+button:hover {
+  background:linear-gradient(to bottom, #4b4377 5%, #332e52 100%);
+  background-color:#4b4377;
+}

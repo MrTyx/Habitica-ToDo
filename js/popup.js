@@ -8,22 +8,22 @@ $(function() {
   ], function(items) {
 
     if (!chrome.runtime.error) {
-
       if (
         !items.habitica_todo_user_id      ||
         !items.habitica_todo_api_token    ||
         !items.habitica_todo_difficulty   ||
         !items.habitica_todo_show_options ||
         !items.habitica_todo_autoclose_tab) {
-        chrome.tabs.create({'url': '/options.html'});
+        chrome.tabs.create({'url': '/options_page.html'});
       } else {
         chrome.tabs.query({
           active: true,
           currentWindow: true
         }, function(tab) {
           items.tab_title = tab[0].title;
-          items.tab_url = tab[0].url;
-          items.due_date = '';
+          items.tab_url   = tab[0].url;
+          items.tab_id    = tab[0].id;
+          items.due_date  = '';
           if (items.habitica_todo_show_options == 'no') {
             $("body").load("loader.html", function() {
               post_data(items);
@@ -38,7 +38,7 @@ $(function() {
 });
 
 function prepare_form(items) {
-  $("body").load("form.html", function() {
+  $("body").load("popup_form.html", function() {
     $("#title").val(items.tab_title);
     $("#url").val(items.tab_url);
     $("#difficulty_radios").buttonset();
@@ -49,6 +49,8 @@ function prepare_form(items) {
     });
 
     $("#send_button").on("click", function() {
+      $('#loading_wrapper').show();
+      $('#loading_inner').load('loader.html');
       items.tab_title = $('#title').val();
       items.tab_url   = $('#url').val();
       items.due_date  = $('#date').val();
@@ -60,17 +62,11 @@ function prepare_form(items) {
 
 function post_data(items){
 
+
   // Remove ] and ) where it would break Habitica markdown
   var url   = items.tab_url.split(')').join('%29');
   var title = items.tab_title.split(']').join('\]')
                              .split('[').join('\[');
-
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function(tab) {
-    console.log(tab[0].id);
-  });
 
   xhr = new XMLHttpRequest();
   xhr.open("POST", "https://habitica.com/api/v3/tasks/user", true);
@@ -79,21 +75,19 @@ function post_data(items){
   xhr.setRequestHeader("x-api-key", items.habitica_todo_api_token);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-      new Audio('sounds/success_1.mp3').play();
-      setTimeout(function(){
-        if (items.habitica_todo_autoclose_tab == 'yes') {
-          chrome.tabs.query({
-            active: true,
-            currentWindow: true
-          }, function(tab) {
-            chrome.tabs.remove(tab[0].id);
-          });
-        } else {
-          window.close();
-        }
-      }, 1000);
-    } else {
-      console.log("Error", xhr.statusText);
+      if (xhr.status == 200 || xhr.status == 201) {
+        new Audio('sounds/success_1.mp3').play();
+        setTimeout(function(){
+          if (items.habitica_todo_autoclose_tab == 'yes') {
+            chrome.tabs.remove(items.tab_id);
+          } else {
+            window.close();
+          }
+        }, 1000);
+      } else {
+        alert("Failed to send. Status code: "+xhr.status+". Status text: '"+xhr.statusText+"'");
+        window.close();
+      }
     }
   }
   var difficulty = 1;
