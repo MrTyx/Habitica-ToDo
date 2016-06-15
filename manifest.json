@@ -1,7 +1,7 @@
 {
   "name": "Habitica ToDo",
   "author": "MrTyx",
-  "version": "2.3",
+  "version": "2.4",
   "manifest_version": 2,
   "browser_action": {
     "name": "Make current tab url a Habitica ToDo",
