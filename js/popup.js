@@ -68,6 +68,11 @@ function post_data(items){
   var title = items.tab_title.split(']').join('\]')
                              .split('[').join('\[');
 
+  // Change relative URLs to absolute.
+  if (/^[a-zA-Z0-9_\-]+:\/\//.test(url) == false) {
+    url = 'http://' + url;
+  }
+
   xhr = new XMLHttpRequest();
   xhr.open("POST", "https://habitica.com/api/v3/tasks/user", true);
   xhr.setRequestHeader("Content-type", "application/json");
