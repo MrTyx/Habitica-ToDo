@@ -50,7 +50,9 @@ function prepare_form(items) {
     $("input:radio[name=difficulty]").filter("[value="+items.habitica_todo_difficulty+"]")
                                      .trigger("click");
     $("#date").datepicker({
-      dateFormat: "yy-mm-dd"
+      dateFormat: "yy-mm-dd",
+      showOtherMonths: true,
+      selectOtherMonths: true
     });
 
     $("#send_button").on("click", function() {
@@ -92,14 +94,15 @@ function post_data(items){
       // Habitica uses 201, but v2 used 200, so this is mostly just incase
       // they change something in the future
       if (xhr.status == 200 || xhr.status == 201) {
-        new Audio('sounds/success_1.mp3').play();
-        setTimeout(function(){
+        var success_sound = new Audio('sounds/success_1.mp3');
+        success_sound.addEventListener('ended', function() {
           if (items.habitica_todo_autoclose_tab == 'yes') {
             chrome.tabs.remove(items.tab_id);
           } else {
             window.close();
           }
-        }, 1000);
+        })
+        success_sound.play();
       } else {
         alert("Failed to send. Status code: "+xhr.status+". Status text: '"+xhr.statusText+"'");
         window.close();
@@ -118,9 +121,9 @@ function post_data(items){
   }
 
   // Adjust date from local timezone to UTC, then to an ISOString when posted
-  var due_date = new Date(items.due_date);
-  var adjusted_date = new Date(
-    Date.UTC(
+  if (items.due_date != '') {
+    var due_date = new Date(items.due_date);
+    items.due_date = new Date(Date.UTC(
       due_date.getFullYear(),
       due_date.getMonth(),
       due_date.getDate(),
@@ -128,8 +131,8 @@ function post_data(items){
       due_date.getMinutes(),
       due_date.getSeconds(),
       due_date.getMilliseconds()
-    )
-  );
+    )).toISOString();
+  }
 
   // Finally post the formatted data.
   xhr.send(JSON.stringify({
@@ -137,6 +140,6 @@ function post_data(items){
     "type":"todo",
     "value":"0",
     "priority": difficulty,
-    "date": adjusted_date.toISOString()
+    "date": items.due_date
   }));
 }

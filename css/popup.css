@@ -42,16 +42,12 @@ body {
 
 /* Datepicker */
 div.ui-datepicker { font-size: 10px; }
-#difficulty_radios .ui-button {
-  width: 82px;
-}
-#difficulty_radios .ui-button .ui-button-text {
-  font-size: 12px;
-}
+
 
 /* The first inputs */
 #input_table input[type=text] {
   font-size: 12px;
+  line-height: 1.5em;
   width: 100%;
 }
 
@@ -62,12 +58,18 @@ div.ui-datepicker { font-size: 10px; }
   justify-content: flex-start;
   width: 100%;
 }
+#difficulty_radios .ui-button {
+  width: 82px;
+}
+#difficulty_radios .ui-button .ui-button-text {
+  font-size: 12px;
+}
 
 /* Send Button */
 #input_table #send_button {
   background-color: #4b4377;
   cursor: pointer;
-    color: #FFFFFF;
+  color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: bold;
