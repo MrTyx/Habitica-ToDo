@@ -10,9 +10,6 @@ $(function() {
     if (!chrome.runtime.error) {
       $("#user_id")             .val(items.habitica_todo_user_id);
       $("#api_token")           .val(items.habitica_todo_api_token);
-      //$("#difficulty")          .val(items.habitica_todo_difficulty);
-      //$("#show_options")        .val(items.habitica_todo_show_options);
-      //$("#autoclose_tab")       .val(items.habitica_todo_autoclose_tab);
       $('#success_sound_select').val(items.habitica_todo_success_sound);
 
       $("#difficulty_radios").buttonset();

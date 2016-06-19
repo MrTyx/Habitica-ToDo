@@ -20,7 +20,7 @@ $(function() {
         if (!items.habitica_todo_difficulty)    { items.habitica_todo_difficulty    = 'easy'      }
         if (!items.habitica_todo_show_options)  { items.habitica_todo_show_options  = 'yes'       }
         if (!items.habitica_todo_autoclose_tab) { items.habitica_todo_autoclose_tab = 'no'        }
-        if (!items.habitica_todo_success_sound) { items.habitica_todo_autoclose_tab = 'success_4' }
+        if (!items.habitica_todo_success_sound) { items.habitica_todo_success_sound = 'success_4' }
 
         // Get the current window behind the popup
         // We need this for the url, the title, and the id (to autoclose it)
@@ -32,6 +32,7 @@ $(function() {
           items.tab_url   = tab[0].url;         // eg 'http://www.facebook.com'
           items.tab_id    = tab[0].id;          // eg '123'
           items.due_date  = '';
+
           // If 'Don't show' setting, then just show the loader and post
           if (items.habitica_todo_show_options == 'no') {
             $("body").load("loader.html", function() {
@@ -97,6 +98,7 @@ function post_data(items){
   xhr.setRequestHeader("x-api-key", items.habitica_todo_api_token);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
+
       // Habitica uses 201, but v2 used 200, so this is mostly just incase
       // they change something in the future
       if (xhr.status == 200 || xhr.status == 201) {
