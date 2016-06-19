@@ -4,18 +4,24 @@ $(function() {
     "habitica_todo_api_token",          // API token as password for User ID
     "habitica_todo_difficulty",         // String of difficulty, eg 'medium'
     "habitica_todo_show_options",       // Show options on icon click? eg 'yes'
-    "habitica_todo_autoclose_tab"       // Close tab after success? eg 'no'
+    "habitica_todo_autoclose_tab",      // Close tab after success? eg 'no'
+    "habitica_todo_success_sound"
   ], function(items) {
     if (!chrome.runtime.error) {
       // If you are missing a setting, open newtab to options.
       if (
-        !items.habitica_todo_user_id      ||
-        !items.habitica_todo_api_token    ||
-        !items.habitica_todo_difficulty   ||
-        !items.habitica_todo_show_options ||
-        !items.habitica_todo_autoclose_tab) {
+        !items.habitica_todo_user_id   ||
+        !items.habitica_todo_api_token
+      ) {
         chrome.tabs.create({'url': '/options_page.html'});
       } else {
+        // Defaults. Could just redirect to options page but this way I don't
+        // bug users constantly while I am developing.
+        if (!items.habitica_todo_difficulty)    { items.habitica_todo_difficulty    = 'easy'      }
+        if (!items.habitica_todo_show_options)  { items.habitica_todo_show_options  = 'yes'       }
+        if (!items.habitica_todo_autoclose_tab) { items.habitica_todo_autoclose_tab = 'no'        }
+        if (!items.habitica_todo_success_sound) { items.habitica_todo_autoclose_tab = 'success_4' }
+
         // Get the current window behind the popup
         // We need this for the url, the title, and the id (to autoclose it)
         chrome.tabs.query({
@@ -94,15 +100,23 @@ function post_data(items){
       // Habitica uses 201, but v2 used 200, so this is mostly just incase
       // they change something in the future
       if (xhr.status == 200 || xhr.status == 201) {
-        var success_sound = new Audio('sounds/success_1.mp3');
-        success_sound.addEventListener('ended', function() {
+        if (items.habitica_todo_success_sound != 'none') {
+          var success_sound = new Audio('sounds/'+items.habitica_todo_success_sound+'.mp3');
+          success_sound.addEventListener('ended', function() {
+            if (items.habitica_todo_autoclose_tab == 'yes') {
+              chrome.tabs.remove(items.tab_id);
+            } else {
+              window.close();
+            }
+          })
+          success_sound.play();
+        } else {
           if (items.habitica_todo_autoclose_tab == 'yes') {
             chrome.tabs.remove(items.tab_id);
           } else {
             window.close();
           }
-        })
-        success_sound.play();
+        }
       } else {
         alert("Failed to send. Status code: "+xhr.status+". Status text: '"+xhr.statusText+"'");
         window.close();
