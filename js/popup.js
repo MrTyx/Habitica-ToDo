@@ -8,14 +8,12 @@ $(function() {
     "habitica_todo_success_sound"
   ], function(items) {
     if (!chrome.runtime.error) {
-      // If you are missing a setting, open newtab to options.
-      if (
-        !items.habitica_todo_user_id   ||
-        !items.habitica_todo_api_token
-      ) {
+      // If you are missing your user id or api token, then open newtab to options.
+      if (!items.habitica_todo_user_id || !items.habitica_todo_api_token) {
         chrome.tabs.create({'url': '/options_page.html'});
       } else {
-        // Defaults. Could just redirect to options page but this way I don't
+
+        // Defaults. We could just redirect to options page but this way I don't
         // bug users constantly while I am developing.
         if (!items.habitica_todo_difficulty)    { items.habitica_todo_difficulty    = 'easy'      }
         if (!items.habitica_todo_show_options)  { items.habitica_todo_show_options  = 'yes'       }
@@ -101,7 +99,7 @@ function post_data(items){
 
       // Habitica uses 201, but v2 used 200, so this is mostly just incase
       // they change something in the future
-      if (xhr.status == 200 || xhr.status == 201) {
+      if (xhr.status == 201 || xhr.status == 200) {
         if (items.habitica_todo_success_sound != 'none') {
           var success_sound = new Audio('sounds/'+items.habitica_todo_success_sound+'.mp3');
           success_sound.addEventListener('ended', function() {
@@ -153,8 +151,8 @@ function post_data(items){
   // Finally post the formatted data.
   xhr.send(JSON.stringify({
     "text": "["+title+"]("+url+" )",
-    "type":"todo",
-    "value":"0",
+    "type": "todo",
+    "value": "0",
     "priority": difficulty,
     "date": items.due_date
   }));

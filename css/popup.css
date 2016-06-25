@@ -2,7 +2,6 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: 'Roboto', sans-serif;
 }
 body {
   width: 400px;
@@ -38,6 +37,7 @@ body {
 #input_table td {
   padding-top: 2px;
   padding-bottom: 2px;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Datepicker */
@@ -49,6 +49,7 @@ div.ui-datepicker { font-size: 10px; }
   font-size: 12px;
   line-height: 1.5em;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Wrapper for difficulty buttons */
