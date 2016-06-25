@@ -18,8 +18,7 @@
           </span><br>
           <span class='answer'>
             <a href="https://habitica.com/#/options/settings/api" target="_blank">Follow this link</a>.
-            Copy and paste into here. Don't forget, your API token is basically a
-            password.
+            Copy and paste into here.
           </span>
         </li>
 
@@ -49,10 +48,7 @@
           </span><br>
           <span class='answer'>
             Double check that you have your username and API token set correctly. If
-            you are not authenticated, then obviously this app will not work. If it
-            is correct, then take a moment to mutter curses at MrTyx for
-            insulting your intelligence by implying you would screw up a username
-            and password.
+            you are not authenticated, then obviously this app will not work.
           </span>
         </li>
 
@@ -99,18 +95,24 @@
 
         <tr>
           <td>User ID</td>
-          <td><input type="text" id="user_id" /></td>
+          <td>
+            <input type="text" id="user_id" />
+            <span id='user_id_icon' class='ui-icon ui-icon-closethick'></span>
+          </td>
         </tr>
 
         <tr>
           <td>API Token</td>
-          <td><input type="text" id="api_token" /></td>
+          <td>
+            <input type="text" id="api_token" />
+            <span id='api_token_icon' class='ui-icon ui-icon-closethick'></span>
+          </td>
         </tr>
 
         <tr>
           <td>Default Difficulty</td>
           <td>
-            <div id="difficulty_radios">
+            <div id="difficulty_radios" class="radio_buttons">
               <input type="radio" id="difficulty_trivial" name="difficulty" value="trivial">
               <label for="difficulty_trivial">Trivial</label>
 
@@ -127,7 +129,7 @@
         </tr>
 
         <tr>
-          <td>Show Options Window</td>
+          <td>Options Window</td>
           <td>
             <div id="show_options_radios">
               <input type="radio" id="show_options_yes" name="show_options" value="yes" checked>
@@ -173,8 +175,8 @@
         <tr>
           <td colspan="2"><h1><center><div id="status"></div></center></h1></td>
         </tr>
-      </table>
 
+      </table>
     </div>
   </div>
 

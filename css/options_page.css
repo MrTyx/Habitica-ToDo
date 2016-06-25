@@ -1,7 +1,3 @@
-* {
-  font-family: 'Roboto', sans-serif;
-}
-
 body {
   background: #4b4377;
   margin: 0px;
@@ -20,7 +16,7 @@ body {
 
 #left_pane {
   margin-right: 50px;
-  width: 400px;
+  width: 500px;
   height: auto;
   padding: 0px 20px;
 }
@@ -28,17 +24,18 @@ body {
 #left_pane h1 {
   text-align: center;
   color: #FFF;
-  font-weight: 100;
+  font-weight: bold;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 }
 
 #left_pane ul {
-  list-style-type:none;
+  list-style: none;
 }
 
 #left_pane li {
   margin: 10px;
 }
+
 #left_pane .question {
   color: #FFF;
   font-weight: bold;
@@ -46,7 +43,7 @@ body {
 
 #left_pane .answer,
 #left_pane .answer a {
-  color: #DDD;
+  color: #CCC;
 }
 
 #right_pane {
@@ -54,7 +51,7 @@ body {
   width: 500px;
   height: auto;
   background: #f4f4f4;
-  border-radius: 3px;
+  border-radius: 10px;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -66,48 +63,77 @@ body {
   text-align: center;
 }
 
-
-td {
+#right_pane td {
   padding-left: 10px;
   padding-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  min-height: 30px;
 }
 
-td:nth-child(2) {
+#right_pane td:nth-child(1) {
+  width: 120px;
+}
+
+#right_pane td:nth-child(2) {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-input[type="text"],
-select {
+#right_pane input[type="text"],
+#right_pane select {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   outline: none;
   display: block;
-  width: 300px;
-  padding: 7px;
+  width: 270px;
   border: none;
   border-bottom: 1px solid #ddd;
   background: transparent;
-  margin-bottom: 10px;
-  font-family: 'Roboto', sans-serif;
-  height: 45px;
+  margin-right: 10px;
+  font-family: monospace;
 }
 
-/*#difficulty_radios    .ui-button { width: 80px; }*/
-#show_options_radios  .ui-button { width: 80px; }
-#autoclose_tab_radios .ui-button { width: 80px; }
+/*#right_pane input[type="text"] { font-family: monospace; }
+#right_pace select { font-family: "Roboto", sans-serif; }*/
 
+#right_pane .ui-icon {
+  background-image: url('../jquery-ui-1.11.4.custom/images/ui-icons_734d99_256x240.png');
+}
 
-button {
+#difficulty_radios    .ui-button,
+#show_options_radios  .ui-button,
+#autoclose_tab_radios .ui-button {
+  border-radius: 0;
+}
+
+#difficulty_radios    .ui-button {
+  min-width: 70px;
+}
+
+#show_options_radios  .ui-button,
+#autoclose_tab_radios .ui-button {
+  min-width: 90px;
+}
+
+#difficulty_radios    .ui-button .ui-button-text,
+#show_options_radios  .ui-button .ui-button-text,
+#autoclose_tab_radios .ui-button .ui-button-text {
+  line-height: 1.2em;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#right_pane #save {
   background-color: #4b4377;
-  border: 1px solid #27A0A0;
+  border: 2px solid #332e52;
   display: inline-block;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #CCC;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+  font-weight: bold;
   padding: 8px 18px;
   text-decoration: none;
   text-transform: uppercase;
@@ -116,7 +142,7 @@ button {
   margin-top: 25px;
 }
 
-button:hover {
+#right_pane #save:hover {
+  color: #FFF;
   background:linear-gradient(to bottom, #4b4377 5%, #332e52 100%);
-  background-color:#4b4377;
 }

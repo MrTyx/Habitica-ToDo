@@ -12,3 +12,6 @@ Notifications Sounds
 
 Icons
 + Gregor Cresnar http://www.flaticon.com/free-icon/chat_126499
+
+Loader
++ ??? https://codepen.io/magnus16/pen/BKoRNw 
