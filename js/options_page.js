@@ -94,7 +94,6 @@ $("#save").on("click", function() {
       $("#status").finish().show().text(chrome.runtime.error);
     } else {
       //$("#status").finish().show().text("Saved your settings.").fadeOut(3000);
-      console.log($("#save"));
       $("#save")
         .css("background","green")
         .text("Saved!")
