@@ -124,11 +124,11 @@ $("#save").on("click", function() {
     } else {
       $("#save")
         .addClass("btn-success")
-        .removeClass("btn-info")
+        .removeClass("btn-warning")
         .text("SAVED!");
       setTimeout(function() {
         $("#save")
-          .addClass("btn-info")
+          .addClass("btn-warning")
           .removeClass("btn-success")
           .text("SAVE SETTINGS");
       }, 5000);
