@@ -1,196 +1,269 @@
 <!DOCTYPE html>
 <head>
   <title>Set Habitica ToDo Options</title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link href="jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+  <link href="lib/bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link href="lib/simplex-3.3.7/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <link href="css/options_page.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-  <div id='wrapper'>
-    <div id='left_pane'>
-      <h1>QUESTIONS</h1>
-      <ul>
+<div class="container">
 
-        <li>
-          <span class='question'>
-            Where can I find my User ID and API Token?
-          </span><br>
-          <span class='answer'>
-            <a href="https://habitica.com/#/options/settings/api" target="_blank">Follow this link</a>.
-            Copy and paste into here.
-          </span>
-        </li>
+  <div class="col-xs-12 col-md-6 col-md-push-6">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">Settings</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-horizontal">
 
-        <li>
-          <span class='question'>
-            I want source code.
-          </span><br>
-          <span class='answer'>
-            <a href='https://github.com/MrTyx/Habitica-ToDo'>Click here</a>. Laugh
-            at my coding conventions.
-          </span>
-        <li>
-          <span class='question'>
-            When I click the webpage while the popup says sending,<br>the confirmation sound doesn't play and/or the tab doesn't autoclose
-          </span><br>
-          <span class='answer'>
-            This is because Chrome closes the popup when it receives input elsewhere
-            in the browser. There is no fix for this available. The ToDo will still be
-            posted to Habitica though (try it yourself if curious).
-            <a href="https://developer.chrome.com/extensions/faq#faq-persist-popups" target="_blank">
-            Click here</a> if you would like more information.
-          </span>
-        </li>
-
-
-        <li>
-          <span class='question'>
-            Help! I am getting error messages with status code 401!
-          </span><br>
-          <span class='answer'>
-            Double check that you have your username and API token set correctly. If
-            you are not authenticated, then obviously this extension will not work.
-          </span>
-        </li>
-
-        <li>
-          <span class='question'>
-            Help! I am getting error messages with status code 0!
-          </span><br>
-          <span class='answer'>
-            Check you are connected to the internet. If you are on a work or university
-            connection, it is possible that Habitica is blocked by a firewall for being
-            "Games". If that is the case, try bribing your local sysadmin with whiskey and brownies.
-          </span>
-        </li>
-
-        <li>
-          <span class='question'>
-            I have opinions, feature requests and/or bug reports!
-          </span><br>
-          <span class='answer'>
-            <a href="https://github.com/MrTyx/Habitica-ToDo/issues/new" target="_blank">Post it on Github</a>
-            and we will see what we can do. If it something worthwhile, I'll make
-            some time.
-          </span>
-        </li>
-
-        <li>
-          <span class='question'>
-            Who is the most beautiful woman in the whole world?
-          </span><br>
-          <span class='answer'>
-            Mrs Tyx, who is a wonderful woman and I love her dearly.
-          </span>
-        </li>
-      </ul>
-    </div>
-
-    <div id='right_pane'>
-      <table>
-        <tr>
-          <td colspan="2">
-            <h1>SETTINGS</h1>
-          </td>
-        </tr>
-
-        <tr>
-          <td>User ID</td>
-          <td>
-            <input type="text" id="user_id" />
-            <span id='user_id_icon' class='ui-icon ui-icon-closethick'></span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>API Token</td>
-          <td>
-            <input type="text" id="api_token" />
-            <span id='api_token_icon' class='ui-icon ui-icon-closethick'></span>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Default Difficulty</td>
-          <td>
-            <div id="difficulty_radios" class="radio_buttons">
-              <input type="radio" id="difficulty_trivial" name="difficulty" value="trivial">
-              <label for="difficulty_trivial">Trivial</label>
-
-              <input type="radio" id="difficulty_easy" name="difficulty" value="easy" checked>
-              <label for="difficulty_easy">Easy</label>
-
-              <input type="radio" id="difficulty_medium" name="difficulty" value="medium">
-              <label for="difficulty_medium">Medium</label>
-
-              <input type="radio" id="difficulty_hard" name="difficulty" value="hard">
-              <label for="difficulty_hard">Hard</label>
+          <div class="form-group">
+            <label for="user_id" class="col-xs-3 control-label">
+              User ID
+            </label>
+            <div class="input-group col-xs-8">
+              <input type="text" class="form-control" id="user_id" />
+              <span class="input-group-addon">
+                <span id='user_id_icon' class='glyphicon glyphicon-remove'></span>
+              </span>
             </div>
-          </td>
-        </tr>
+          </div>
 
-        <tr>
-          <td>Prefix</td>
-          <td>
-            <input type="text" id="prefix" />
-          </td>
-        </tr>
-
-        <tr>
-          <td>Options Window</td>
-          <td>
-            <div id="show_options_radios">
-              <input type="radio" id="show_options_yes" name="show_options" value="yes" checked>
-              <label for="show_options_yes">Yes</label>
-
-              <input type="radio" id="show_options_no" name="show_options" value="no">
-              <label for="show_options_no">No</label>
+          <div class="form-group">
+            <label for="api_token" class="col-xs-3 control-label">
+              Api Token
+            </label>
+            <div class="input-group col-xs-8">
+              <input type="text" class="form-control" id="api_token" />
+              <span class="input-group-addon">
+                <span id='api_token_icon' class='glyphicon glyphicon-remove'></span>
+              </span>
             </div>
-          </td>
-        </tr>
+          </div>
 
-        <tr>
-          <td>Autoclose Tab</td>
-          <td>
-            <div id="autoclose_tab_radios">
-              <input type="radio" id="autoclose_tab_yes" name="autoclose_tab" value="yes" checked>
-              <label for="autoclose_tab_yes">Yes</label>
-
-              <input type="radio" id="autoclose_tab_no" name="autoclose_tab" value="no">
-              <label for="autoclose_tab_no">No</label>
+          <div class="form-group">
+            <label for="due_date" class="col-xs-3 control-label">
+              Default Date
+            </label>
+            <div class="input-group col-xs-8">
+              <span class="input-group-addon">Today + </span>
+              <input type="number" class="form-control" id="add_days">
+              <span class="input-group-addon"> days</span>
             </div>
-          </td>
-        </tr>
+          </div>
 
-        <tr>
-          <td>Success Sound</td>
-          <td>
-            <select id="success_sound_select">
-              <option value="none">None</option>
-              <option value="success_1" selected>Filling Your Inbox</option>
-              <option value="success_2">Job Done</option>
-              <option value="success_3">All Eyes On Me</option>
-              <option value="success_4">You've Been Informed</option>
-              <option value="success_5">Arpeggio</option>
-            </select>
-          </td>
-        </tr>
+          <div class=" form-group">
+            <label for="difficulty_radios" class="col-xs-3 control-label">
+              Default Difficulty
+            </label>
+            <div class="input-group col-xs-8">
+              <div class="btn-group btn-group-sm btn-group-justified" id="difficulty_radios" data-toggle="buttons">
+                <label class="btn btn-warning">
+                  <input type="radio" name="difficulty" autocomplete="off" id="difficulty_trivial" value="trivial"> Trivial
+                </label>
+                <label class="btn btn-warning">
+                  <input type="radio" name="difficulty" autocomplete="off" id="difficulty_easy" value="easy"> Easy
+                </label>
+                <label class="btn btn-warning">
+                  <input type="radio" name="difficulty" autocomplete="off" id="difficulty_medium" value="medium"> Medium
+                </label>
+                <label class="btn btn-warning">
+                  <input type="radio" name="difficulty" autocomplete="off" id="difficulty_hard" value="hard"> Hard
+                </label>
+              </div>
+            </div>
+          </div>
 
-        <tr>
-          <td colspan="2"><button id="save">Save Settings</button></td>
-        </tr>
+          <div class="form-group">
+            <label for="prefix" class="col-xs-3 control-label">
+              Default Prefix
+            </label>
+            <div class="input-group col-xs-8">
+              <input type="text" class="form-control" id="prefix" />
+            </div>
+          </div>
 
-        <tr>
-          <td colspan="2"><h1><center><div id="status"></div></center></h1></td>
-        </tr>
+          <div class="form-group">
+            <label for="suffix" class="col-xs-3 control-label">
+              Default Suffix
+            </label>
+            <div class="input-group col-xs-8">
+              <input type="text" class="form-control" id="suffix" />
+            </div>
+          </div>
 
-      </table>
+          <div class="form-group">
+            <label for="show_options_radios" class="col-xs-3 control-label">
+              Show Options
+            </label>
+            <div class="input-group col-xs-8">
+              <div class="btn-group btn-group-justified" id="show_options_radios" data-toggle="buttons">
+                <label class="btn btn-warning">
+                  <input type="radio" name="show_options" autocomplete="off" id="show_options_yes" value="yes"> Yes
+                </label>
+                <label class="btn btn-warning">
+                  <input type="radio" name="show_options" autocomplete="off" id="show_options_no" value="no"> No
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="autoclose_tab_radios" class="col-xs-3 control-label">
+              Autoclose Tab
+            </label>
+            <div class="input-group col-xs-8">
+              <div class="btn-group btn-group-justified" id="autoclose_tab_radios" data-toggle="buttons">
+                <label class="btn btn-warning">
+                  <input type="radio" name="autoclose_tab" autocomplete="off" id="autoclose_tab_yes" value="yes"> Yes
+                </label>
+                <label class="btn btn-warning">
+                  <input type="radio" name="autoclose_tab" autocomplete="off" id="autoclose_tab_no" value="no"> No
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="success_sound_select" class="col-xs-3 control-label">
+              Success Sound
+            </label>
+            <div class="input-group col-xs-8">
+              <select id="success_sound_select" class="form-control">
+                <option value="none">None</option>
+                <option value="success_1" selected>Filling Your Inbox</option>
+                <option value="success_2">Job Done</option>
+                <option value="success_3">All Eyes On Me</option>
+                <option value="success_4">You've Been Informed</option>
+                <option value="success_5">Arpeggio</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-3" id="save_message" style="opacity:0">
+              <h4 class="text-center">
+                <strong>SAVED!</strong>
+              </h4>
+            </div>
+            <div class="col-xs-8">
+              <button id="save" class="btn btn-warning btn-block">SAVE SETTINGS</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="col-xs-12 col-md-6 col-md-pull-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Questions</h3>
+      </div>
+      <div class="panel-body">
+        <ol id="questions">
+        <li>
+          <strong>
+              Where can I find my User ID and API Token?
+          </strong>
+          <br>
+          <a href="https://habitica.com/#/options/settings/api" target="_blank">Click here</a>. Copy and paste into here.
+        </li>
+
+        <li>
+          <strong>
+            I want source code.
+          </strong>
+          <br>
+          <a href='https://github.com/MrTyx/Habitica-ToDo'>Click here</a>. Laugh at my coding conventions.
+        </li>
+
+        <li>
+          <strong>
+            When I click the webpage while the popup says sending, the confirmation sound doesn't play and/or the tab doesn't autoclose. Can you fix this?
+          </strong>
+          <br>
+          This is because Chrome closes the popup when it receives input elsewhere
+          in the browser. There is no fix for this available. The ToDo will still be
+          posted to Habitica though (try it yourself if curious).
+          <a href="https://developer.chrome.com/extensions/faq#faq-persist-popups" target="_blank">
+          Click here</a> if you would like more information.
+        </li>
+
+        <li>
+          <strong>
+            Help! I am getting error messages with status code 401!
+          </strong>
+          <br>
+          Double check that you have your username and API token set correctly. If
+          you are not authenticated, then obviously this extension will not work.
+        </li>
+
+        <li>
+          <strong>
+            Help! I am getting error messages with status code 0!
+          </strong>
+          <br>
+          Check you are connected to the internet. If you are on a work or university
+          connection, it is possible that Habitica is blocked by a firewall for being
+          "Games". If that is the case, try bribing your local sysadmin with whiskey and brownies.
+        </li>
+
+        <li>
+          <strong>
+            I have opinions, feature requests and/or bug reports!
+          </strong>
+          <br>
+          <a href="https://github.com/MrTyx/Habitica-ToDo/issues/new" target="_blank">Post it on Github</a>
+          and we will see what we can do. If it something worthwhile, I'll make
+          some time.
+        </li>
+
+        <li>
+          <strong>
+            Who is the most beautiful woman in the whole world?
+          </strong>
+          <br>
+            Mrs Tyx, who is a wonderful woman and I love her dearly.
+        </li>
+
+        <li>
+          <strong>
+            What are some helpful links?
+          </strong>
+          <br>
+          <ul>
+            <li>
+              <a href="http://www.emoji-cheat-sheet.com/" target="_blank">
+                Emoji Cheat Sheet
+              </a>
+            </li>
+            <li>
+              <a href="http://habitica.wikia.com/wiki/Markdown_Cheat_Sheet" target="_blank">
+                Habitica Markdown Cheat Sheet
+              </a>
+            </li>
+            <li>
+              <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">
+                Daring Fireball Markdown Syntax
+              </a>
+            </li>
+            <li>
+              <a href="http://habitica.wikia.com/wiki/Habitica_ToDo_Chrome_Extension" target="_blank">
+                Habitica ToDo Wiki Page
+              </a>
+            </li>
+          </ul>
+        </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
   <script src="js/jquery-2.2.3.min.js"></script>
-  <script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+  <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="lib/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js"></script>
   <script src="js/options_page.js"></script>
 
 </body>

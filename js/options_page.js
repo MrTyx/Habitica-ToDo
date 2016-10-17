@@ -2,51 +2,71 @@ $(function() {
   chrome.storage.sync.get([
     "habitica_todo_user_id",
     "habitica_todo_api_token",
+    "habitica_todo_add_days",
     "habitica_todo_difficulty",
+    "habitica_todo_prefix",
+    "habitica_todo_suffix",
     "habitica_todo_show_options",
     "habitica_todo_autoclose_tab",
     "habitica_todo_success_sound"
   ], function(items) {
     if (!chrome.runtime.error) {
 
-      if (items.habitica_todo_user_id)
+      if (items.habitica_todo_user_id) {
         $("#user_id").val(items.habitica_todo_user_id);
+      }
 
-      if (items.habitica_todo_api_token)
+      if (items.habitica_todo_api_token) {
         $("#api_token").val(items.habitica_todo_api_token);
+      }
 
-      if (items.habitica_todo_difficulty)
+      if (items.habitica_todo_add_days) {
+        $("#add_days").val(items.habitica_todo_add_days);
+      }
+
+      if (items.habitica_todo_difficulty) {
         $("input:radio[name=difficulty]")
           .filter("[value="+items.habitica_todo_difficulty+"]")
           .trigger("click");
+      }
 
-      if (items.habitica_todo_show_options)
+      if (items.habitica_todo_prefix) {
+        $("#prefix").val(items.habitica_todo_prefix);
+      }
+
+      if (items.habitica_todo_suffix) {
+        $("#suffix").val(items.habitica_todo_suffix);
+      }
+
+      if (items.habitica_todo_show_options) {
         $("input:radio[name=show_options]")
           .filter("[value="+items.habitica_todo_show_options+"]")
           .trigger("click");
+      }
 
-      if (items.habitica_todo_autoclose_tab)
+      if (items.habitica_todo_autoclose_tab) {
         $("input:radio[name=autoclose_tab]")
           .filter("[value="+items.habitica_todo_autoclose_tab+"]")
           .trigger("click");
+      }
 
-      if (items.habitica_todo_success_sound)
+      if (items.habitica_todo_success_sound) {
         $('#success_sound_select').val(items.habitica_todo_success_sound);
+      }
 
       // Set correct icon on load
-      validate_and_update_icon('user_id', $('#user_id').val());
+      validate_and_update_icon('user_id',   $('#user_id').val());
       validate_and_update_icon('api_token', $('#api_token').val());
-
-      // Make jQueryUI buttons (they look nicer)
-      $("#difficulty_radios")   .buttonset();
-      $("#show_options_radios") .buttonset();
-      $("#autoclose_tab_radios").buttonset();
 
       // On any input into a text field, then get the id and string
       // Use them to call a function that updates the icon.
       $('input[type=text]').on('input', function() {
         validate_and_update_icon($(this).attr('id'), $(this).val());
       })
+
+      // Enable all the tooltips on the page
+      // http://getbootstrap.com/javascript/#tooltips-examples
+      $('[data-toggle="tooltip"]').tooltip()
 
       // When selecting a sound for success, play it
       $('#success_sound_select').on('change', function() {
@@ -68,41 +88,50 @@ function validate_and_update_icon(id, string) {
     // Valid format is 8-4-4-4-12
     if (/^[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}$/.test(string)) {
       // Regex pass, use a check mark
-      $('#'+id+'_icon').removeClass('ui-icon-closethick').addClass('ui-icon-check');
+      $('#'+id+'_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
     } else {
       // Regex fail, use an X
-      $('#'+id+'_icon').removeClass('ui-icon-check').addClass('ui-icon-closethick');
+      $('#'+id+'_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
     }
 }
 
 $("#save").on("click", function() {
   var user_id       = $("#user_id").val();
   var api_token     = $("#api_token").val();
+  var add_days      = $("#add_days").val();
   var difficulty    = $("input:radio[name=difficulty]:checked").val();
+  var prefix        = $("#prefix").val();
+  var suffix        = $("#suffix").val();
   var show_options  = $("input:radio[name=show_options]:checked").val();
   var autoclose_tab = $("input:radio[name=autoclose_tab]:checked").val();
   var success_sound = $("#success_sound_select").val();
   chrome.storage.sync.set({
     "habitica_todo_user_id":       user_id,
     "habitica_todo_api_token":     api_token,
+    "habitica_todo_add_days":      add_days,
     "habitica_todo_difficulty":    difficulty,
+    "habitica_todo_prefix":        prefix,
+    "habitica_todo_suffix":        suffix,
     "habitica_todo_show_options":  show_options,
     "habitica_todo_autoclose_tab": autoclose_tab,
     "habitica_todo_success_sound": success_sound
   }, function() {
     if (chrome.runtime.error) {
-      $("#status").finish().show().text(chrome.runtime.error);
+      $("#status")
+        .finish()
+        .show()
+        .text(chrome.runtime.error);
     } else {
-      //$("#status").finish().show().text("Saved your settings.").fadeOut(3000);
       $("#save")
-        .css("background","green")
-        .text("Saved!")
-        .delay(1000)
-        .animate({
-          "background-color": "#4b4377"
-        }, 1000, function(){
-          $("#save").text("Save settings");
-        })
+        .addClass("btn-success")
+        .removeClass("btn-info")
+        .text("SAVED!");
+      setTimeout(function() {
+        $("#save")
+          .addClass("btn-info")
+          .removeClass("btn-success")
+          .text("SAVE SETTINGS");
+      }, 5000);
     };
   });
 });

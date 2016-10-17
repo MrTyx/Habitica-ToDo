@@ -5,6 +5,9 @@ $(function() {
     "habitica_todo_difficulty",         // String of difficulty, eg 'medium'
     "habitica_todo_show_options",       // Show options on icon click? eg 'yes'
     "habitica_todo_autoclose_tab",      // Close tab after success? eg 'no'
+    "habitica_todo_prefix",
+    "habitica_todo_suffix",
+    "habitica_todo_add_days",
     "habitica_todo_success_sound"
   ], function(items) {
     if (!chrome.runtime.error) {
@@ -19,6 +22,9 @@ $(function() {
         if (!items.habitica_todo_show_options)  { items.habitica_todo_show_options  = 'yes'       }
         if (!items.habitica_todo_autoclose_tab) { items.habitica_todo_autoclose_tab = 'no'        }
         if (!items.habitica_todo_success_sound) { items.habitica_todo_success_sound = 'success_4' }
+        if (!items.habitica_todo_prefix)        { items.habitica_todo_prefix        = ''          }
+        if (!items.habitica_todo_suffix)        { items.habitica_todo_suffix        = ''          }
+        if (!items.habitica_todo_add_days)      { items.habitica_todo_add_days      = ''          }
 
         // Get the current window behind the popup
         // We need this for the url, the title, and the id (to autoclose it)
@@ -47,18 +53,34 @@ $(function() {
 
 function prepare_form(items) {
   $("body").load("popup_form.html", function() {
+
     // Populate the form with some defaults.
     // Jquery lets us trigger 'clicks' on radios so the right default is selected
     $("#title").val(items.tab_title);
     $("#url").val(items.tab_url);
-    $("#difficulty_radios").buttonset();
-    $("input:radio[name=difficulty]").filter("[value="+items.habitica_todo_difficulty+"]")
-                                     .trigger("click");
+    $('#prefix').val(items.habitica_todo_prefix);
+    $('#suffix').val(items.habitica_todo_suffix);
+    $("input:radio[name=difficulty]")
+      .filter("[value="+items.habitica_todo_difficulty+"]")
+      .trigger("click");
+
+    //
+    if (items.habitica_todo_add_days != '') {
+      var date = new Date();
+      date.setDate(
+        // I have no idea why I need to -1 here.
+        date.getDate() + parseInt(items.habitica_todo_add_days) - 1
+      );
+      $("#date").val(date.getFullYear()+'/'+ (date.getMonth()+1)+'/'+date.getDate());
+    }
+
     $("#date").datepicker({
-      dateFormat: "yy-mm-dd",
-      showOtherMonths: true,
-      selectOtherMonths: true
+      format: "yyyy/mm/dd",
+      todayBtn: "linked",
+      autoclose: true,
+      todayHighlight: true
     });
+
 
     $("#send_button").on("click", function() {
       // Wrapper covers the entire area, inner only covers a strip.
@@ -67,9 +89,11 @@ function prepare_form(items) {
       $('#loading_inner').load('loader.html');
 
       // Update the array values to match the values in the input fields
-      items.tab_title = $('#title').val();
-      items.tab_url   = $('#url').val();
-      items.due_date  = $('#date').val(); // + 'T14:00:00.000Z'
+      items.habitica_todo_prefix     = $('#prefix').val();
+      items.habitica_todo_suffix     = $('#suffix').val();
+      items.tab_title                = $('#title').val();
+      items.tab_url                  = $('#url').val();
+      items.due_date                 = $('#date').val(); // + 'T14:00:00.000Z'
       items.habitica_todo_difficulty = $('input:radio[name=difficulty]:checked').val();
       post_data(items);
     })
@@ -77,17 +101,6 @@ function prepare_form(items) {
 }
 
 function post_data(items){
-
-  // Remove ] and ) where it would break Habitica markdown
-  var url   = items.tab_url.split(')').join('%29');
-  var title = items.tab_title.split(']').join('\]')
-                             .split('[').join('\[');
-
-  // Change relative URLs to absolute.
-  // If url doesn't begin with 'WORD://WHATEVER'
-  if (!/^[a-zA-Z0-9_\-]+:\/\//.test(url)) {
-    url = 'http://' + url;
-  }
 
   xhr = new XMLHttpRequest();
   xhr.open("POST", "https://habitica.com/api/v3/tasks/user", true);
@@ -124,6 +137,17 @@ function post_data(items){
     }
   }
 
+  // Remove ] and ) where it would break Habitica markdown
+  var url   = items.tab_url.split(')').join('%29');
+  var title = items.tab_title.split(']').join('\]')
+                             .split('[').join('\[');
+
+  // Change relative URLs to absolute.
+  // If url doesn't begin with 'WORD://WHATEVER'
+  if (!/^[a-zA-Z0-9_\-]+:\/\//.test(url)) {
+    url = 'http://' + url;
+  }
+
   // Difficulty is stored in Chrome Sync as string, so we adjust to number here
   var difficulty = 1;
   switch(items.habitica_todo_difficulty) {
@@ -148,9 +172,19 @@ function post_data(items){
     )).toISOString();
   }
 
+  // Build the string
+  var string = "";
+  if (items.habitica_todo_prefix != '') {
+    string += items.habitica_todo_prefix;
+  }
+  string += "["+title+"]("+url+" )";
+  if (items.habitica_todo_suffix != '') {
+    string += items.habitica_todo_suffix;
+  }
+
   // Finally post the formatted data.
   xhr.send(JSON.stringify({
-    "text": "["+title+"]("+url+" )",
+    "text": string,
     "type": "todo",
     "value": "0",
     "priority": difficulty,

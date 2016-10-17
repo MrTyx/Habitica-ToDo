@@ -1,5 +1,6 @@
-# Habitica-ToDo
-Chrome Extension to create a Habitica ToDo item using the current URL.
+Habitica-ToDo
+======
+Chrome Extension to create a Habitica ToDo item using the current URL, with customization options.
 
 
 # Credit
@@ -10,8 +11,15 @@ Notifications Sounds
 + Success_4.mp3 https://notificationsounds.com/message-tones/youve-been-informed-345
 + Success_5.mp3 https://notificationsounds.com/wake-up-tones/arpeggio-467
 
-Icons
+Chrome Extension Icons
 + Gregor Cresnar http://www.flaticon.com/free-icon/chat_126499
 
-Loader
-+ ??? https://codepen.io/magnus16/pen/BKoRNw 
+Loader Code
++ Magnus16 https://codepen.io/magnus16/pen/BKoRNw
+
+Bootstrap Datepicker
++ UXSolutions https://github.com/uxsolutions/bootstrap-datepicker
++ https://bootstrap-datepicker.readthedocs.io/en/latest/index.html
+
+Options Page Background
++ UIGradients - Royal http://uigradients.com/

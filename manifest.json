@@ -1,12 +1,9 @@
 {
-  "name": "Habitica ToDo",
-  "author": "MrTyx",
-  "version": "2.6",
   "manifest_version": 2,
-  "browser_action": {
-    "name": "Make current tab url a Habitica ToDo",
-    "default_popup": "popup.html"
-  },
+  "name": "Habitica ToDo",
+  "version": "3.0",
+  "default_locale": "en",
+  "description": "Create a Habitica ToDo from current tab url",
   "icons": {
     "16": "images/icon16.png",
     "24": "images/icon24.png",
@@ -16,6 +13,11 @@
     "256": "images/icon256.png",
     "512": "images/icon512.png"
   },
+  "browser_action": {
+    "name": "Make current tab url a Habitica ToDo",
+    "default_popup": "popup.html"
+  },
+  "author": "MrTyx",
   "options_page": "options_page.html",
   "permissions": [
     "<all_urls>",

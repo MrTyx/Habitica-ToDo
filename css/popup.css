@@ -1,10 +1,6 @@
 /* Globals */
-* {
-  margin: 0px;
-  padding: 0px;
-}
 body {
-  width: 400px;
+  width: 500px;
 }
 
 /* Loading overlay */
@@ -30,57 +26,22 @@ body {
   background: #4b4377;
 }
 
+/* Adding a little padding */
+#send_button {
+  margin-top: 10px;
+}
 
-/* Building the table */
-#input_table td:nth-child(1) { width: 80px; font-size: 12px; }
-#input_table td:nth-child(2) { width: 320px; }
-#input_table td {
+/* CSS Fixes from inspector tool */
+.table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td {
+  padding: 1px;
+}
+.datepicker table tr td, .datepicker table tr th {
+  height:0px;
+}
+.row {
   padding-top: 2px;
   padding-bottom: 2px;
-  font-family: 'Roboto', sans-serif;
 }
-
-/* Datepicker */
-div.ui-datepicker { font-size: 10px; }
-
-
-/* The first inputs */
-#input_table input[type=text] {
+.datepicker-days * {
   font-size: 12px;
-  line-height: 1.5em;
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Wrapper for difficulty buttons */
-#input_table #difficulty_radios {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-}
-#difficulty_radios .ui-button {
-  width: 82px;
-}
-#difficulty_radios .ui-button .ui-button-text {
-  font-size: 12px;
-}
-
-/* Send Button */
-#input_table #send_button {
-  background-color: #4b4377;
-  cursor: pointer;
-  color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 100%;
-  padding: 5px;
-}
-
-#input_table #send_button:hover {
-  background:linear-gradient(to bottom, #4b4377 5%, #332e52 100%);
-  background-color:#4b4377;
 }

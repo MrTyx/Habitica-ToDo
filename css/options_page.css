@@ -1,148 +1,15 @@
 body {
-  background: #4b4377;
+  /*http://uigradients.com/
+    Royal
+  */
+  background: -webkit-linear-gradient(to top, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
 }
-
-#wrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0px;
-  width: 100%;
-  height: 100%;
+#questions {
+  padding-left: 20px;
 }
-
-#left_pane {
-  margin-right: 50px;
-  width: 500px;
-  height: auto;
-  padding: 0px 20px;
-}
-
-#left_pane h1 {
-  text-align: center;
-  color: #FFF;
-  font-weight: bold;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-}
-
-#left_pane ul {
-  list-style: none;
-}
-
-#left_pane li {
-  margin: 10px;
-}
-
-#left_pane .question {
-  color: #FFF;
-  font-weight: bold;
-}
-
-#left_pane .answer,
-#left_pane .answer a {
-  color: #CCC;
-}
-
-#right_pane {
-  background-color: #4b4377;
-  width: 500px;
-  height: auto;
-  background: #f4f4f4;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#right_pane h1 {
-  text-align: center;
-}
-
-#right_pane td {
-  padding-left: 10px;
+#questions > li {
   padding-bottom: 10px;
-  font-family: "Roboto", sans-serif;
-  min-height: 30px;
-}
-
-#right_pane td:nth-child(1) {
-  width: 120px;
-}
-
-#right_pane td:nth-child(2) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#right_pane input[type="text"],
-#right_pane select {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  outline: none;
-  display: block;
-  width: 270px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-  background: transparent;
-  margin-right: 10px;
-  font-family: monospace;
-}
-
-/*#right_pane input[type="text"] { font-family: monospace; }
-#right_pace select { font-family: "Roboto", sans-serif; }*/
-
-#right_pane .ui-icon {
-  background-image: url('../jquery-ui-1.11.4.custom/images/ui-icons_734d99_256x240.png');
-}
-
-#difficulty_radios    .ui-button,
-#show_options_radios  .ui-button,
-#autoclose_tab_radios .ui-button {
-  border-radius: 0;
-}
-
-#difficulty_radios    .ui-button {
-  min-width: 70px;
-}
-
-#show_options_radios  .ui-button,
-#autoclose_tab_radios .ui-button {
-  min-width: 90px;
-}
-
-#difficulty_radios    .ui-button .ui-button-text,
-#show_options_radios  .ui-button .ui-button-text,
-#autoclose_tab_radios .ui-button .ui-button-text {
-  line-height: 1.2em;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-#right_pane #save {
-  background-color: #4b4377;
-  border: 2px solid #332e52;
-  display: inline-block;
-  cursor: pointer;
-  color: #CCC;
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 8px 18px;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 25px;
-}
-
-#right_pane #save:hover {
-  color: #FFF;
-  background:linear-gradient(to bottom, #4b4377 5%, #332e52 100%);
 }

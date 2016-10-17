@@ -4,57 +4,79 @@
   </div>
 </div>
 
-<table id="input_table">
-  <tr>
-    <td>Due Date</td>
-    <td>
-      <input type="text" id="date" autocomplete="no"/>
-    </td>
-  </tr>
+<div class="container-fluid" style="padding-top:10px; padding-bottom:10px;">
+  <div class="row">
+    <div class="col-xs-3">
+      <h5>Due Date</h5>
+    </div>
+    <div class="col-xs-9">
+        <input type="text" class="form-control input-sm" id="date" placeholder="yyyy/mm/dd">
+    </div>
+  </div>
 
-  <tr>
-    <td>Prefix</td>
-    <td>
-      <input type="text" id="prefix"/>
-    </td>
-  </tr>
+  <div class="row">
+    <div class="col-xs-3">
+      <h5>Prefix</h5>
+    </div>
+    <div class="col-xs-9">
+      <input type="text" class="form-control input-sm" id="prefix" placeholder="Before the link"/>
+    </div>
+  </div>
 
-  <tr>
-    <td>Title</td>
-    <td>
-      <input type="text" id="title" />
-    </td>
-  </tr>
+  <div class="row">
+    <div class="col-xs-3">
+      <h5>Text</h5>
+    </div>
+    <div class="col-xs-9">
+      <input type="text" class="form-control input-sm" id="title"/>
+    </div>
+  </div>
 
-  <tr>
-    <td>URL</td>
-    <td>
-      <input type="text" id="url" />
-    </td>
-  </tr>
+  <div class="row">
+    <div class="col-xs-3">
+      <h5>Url</h5>
+    </div>
+    <div class="col-xs-9">
+      <input type="text" class="form-control input-sm" id="url"/>
+    </div>
+  </div>
 
-  <tr>
-    <td><label for="difficulty">Difficulty</label></td>
-    <td>
-      <div id="difficulty_radios">
-        <input type="radio" id="difficulty_trivial" name="difficulty" value="trivial">
-        <label for="difficulty_trivial">Trivial</label>
+  <div class="row">
+    <div class="col-xs-3">
+      <h5>Suffix</h5>
+    </div>
+    <div class="col-xs-9">
+      <input type="text" class="form-control input-sm" id="suffix" placeholder="After the link"/>
+    </div>
+  </div>
 
-        <input type="radio" id="difficulty_easy" name="difficulty" value="easy">
-        <label for="difficulty_easy">Easy</label>
-
-        <input type="radio" id="difficulty_medium" name="difficulty" value="medium">
-        <label for="difficulty_medium">Medium</label>
-
-        <input type="radio" id="difficulty_hard" name="difficulty" value="hard">
-        <label for="difficulty_hard">Hard</label>
+  <div class="row">
+    <div class="col-xs-3">
+      <h5>Difficulty</h5>
+    </div>
+    <div class="col-xs-9">
+      <div class="btn-group btn-group-justified" id="difficulty_radios" data-toggle="buttons">
+        <label class="btn btn-warning active">
+          <input type="radio" name="difficulty" autocomplete="off" id="difficulty_trivial" value="trivial"> Trivial
+        </label>
+        <label class="btn btn-warning">
+          <input type="radio" name="difficulty" autocomplete="off" id="difficulty_easy" value="easy"> Easy
+        </label>
+        <label class="btn btn-warning">
+          <input type="radio" name="difficulty" autocomplete="off" id="difficulty_medium" value="medium"> Medium
+        </label>
+        <label class="btn btn-warning">
+          <input type="radio" name="difficulty" autocomplete="off" id="difficulty_hard" value="hard"> Hard
+        </label>
       </div>
-    </td>
-  </tr>
+    </div>
+  </div>
 
-  <tr>
-    <td colspan="2">
-      <button type="button" id="send_button">Send to Habitica</button>
-    </td>
-  </tr>
-</table>
+  <div class="row">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-warning btn-block" id="send_button">
+        SEND TO HABITICA
+      </button>
+    </div>
+  </div>
+</div>
