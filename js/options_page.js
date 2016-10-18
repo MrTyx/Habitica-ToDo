@@ -62,11 +62,11 @@ $(function() {
       // Use them to call a function that updates the icon.
       $('input[type=text]').on('input', function() {
         validate_and_update_icon($(this).attr('id'), $(this).val());
-      })
+      });
 
       // Enable all the tooltips on the page
       // http://getbootstrap.com/javascript/#tooltips-examples
-      $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip();
 
       // When selecting a sound for success, play it
       $('#success_sound_select').on('change', function() {
@@ -74,7 +74,7 @@ $(function() {
         if ($(this).val() != 'none') {
           new Audio('sounds/'+$(this).val()+'.mp3').play();
         }
-      })
+      });
     } else {
       // Handling errors, never seen one, but just incase
       $("#status").val(chrome.runtime.error);
@@ -132,6 +132,6 @@ $("#save").on("click", function() {
           .removeClass("btn-success")
           .text("SAVE SETTINGS");
       }, 5000);
-    };
+    }
   });
 });
