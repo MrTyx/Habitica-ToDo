@@ -17,27 +17,41 @@
       <div class="panel-body">
         <div class="form-horizontal">
 
-          <div class="form-group">
+          <div class="form-group" id='user_id_form'>
             <label for="user_id" class="col-xs-3 control-label">
               User ID
             </label>
             <div class="input-group col-xs-8">
-              <input type="text" class="form-control" id="user_id" />
-              <span class="input-group-addon">
-                <span id='user_id_icon' class='glyphicon glyphicon-remove'></span>
-              </span>
+              <input type="text" class="form-control" id="user_id" placeholder="Required"/>
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" id='user_id_icon'></span>
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" id='api_token_form'>
             <label for="api_token" class="col-xs-3 control-label">
               Api Token
             </label>
             <div class="input-group col-xs-8">
-              <input type="text" class="form-control" id="api_token" />
-              <span class="input-group-addon">
-                <span id='api_token_icon' class='glyphicon glyphicon-remove'></span>
-              </span>
+              <input type="text" class="form-control" id="api_token" placeholder="Required"/>
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" id='api_token_icon'></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prefix" class="col-xs-3 control-label">
+              Default Prefix
+            </label>
+            <div class="input-group col-xs-8">
+              <input type="text" class="form-control" id="prefix" placeholder="Before the link"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="suffix" class="col-xs-3 control-label">
+              Default Suffix
+            </label>
+            <div class="input-group col-xs-8">
+              <input type="text" class="form-control" id="suffix" placeholder="After the link" />
             </div>
           </div>
 
@@ -74,23 +88,7 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="prefix" class="col-xs-3 control-label">
-              Default Prefix
-            </label>
-            <div class="input-group col-xs-8">
-              <input type="text" class="form-control" id="prefix" />
-            </div>
-          </div>
 
-          <div class="form-group">
-            <label for="suffix" class="col-xs-3 control-label">
-              Default Suffix
-            </label>
-            <div class="input-group col-xs-8">
-              <input type="text" class="form-control" id="suffix" />
-            </div>
-          </div>
 
           <div class="form-group">
             <label for="show_options_radios" class="col-xs-3 control-label">

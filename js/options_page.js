@@ -12,47 +12,21 @@ $(function() {
   ], function(items) {
     if (!chrome.runtime.error) {
 
-      if (items.habitica_todo_user_id) {
-        $("#user_id").val(items.habitica_todo_user_id);
-      }
+      if (!items.habitica_todo_difficulty)    { items.habitica_todo_difficulty = "easy";    }
+      if (!items.habitica_todo_show_options)  { items.habitica_todo_show_options = "yes";   }
+      if (!items.habitica_todo_autoclose_tab) { items.habitica_todo_autoclose_tab = "no";   }
+      if (!items.habitica_todo_success_sound) { items.habitica_todo_success_sound = "none"; }
 
-      if (items.habitica_todo_api_token) {
-        $("#api_token").val(items.habitica_todo_api_token);
-      }
+      $("#user_id").val(items.habitica_todo_user_id);
+      $("#api_token").val(items.habitica_todo_api_token);
+      $("#add_days").val(items.habitica_todo_add_days);
+      $("#prefix").val(items.habitica_todo_prefix);
+      $("#suffix").val(items.habitica_todo_suffix);
+      $('#success_sound_select').val(items.habitica_todo_success_sound);
 
-      if (items.habitica_todo_add_days) {
-        $("#add_days").val(items.habitica_todo_add_days);
-      }
-
-      if (items.habitica_todo_difficulty) {
-        $("input:radio[name=difficulty]")
-          .filter("[value="+items.habitica_todo_difficulty+"]")
-          .trigger("click");
-      }
-
-      if (items.habitica_todo_prefix) {
-        $("#prefix").val(items.habitica_todo_prefix);
-      }
-
-      if (items.habitica_todo_suffix) {
-        $("#suffix").val(items.habitica_todo_suffix);
-      }
-
-      if (items.habitica_todo_show_options) {
-        $("input:radio[name=show_options]")
-          .filter("[value="+items.habitica_todo_show_options+"]")
-          .trigger("click");
-      }
-
-      if (items.habitica_todo_autoclose_tab) {
-        $("input:radio[name=autoclose_tab]")
-          .filter("[value="+items.habitica_todo_autoclose_tab+"]")
-          .trigger("click");
-      }
-
-      if (items.habitica_todo_success_sound) {
-        $('#success_sound_select').val(items.habitica_todo_success_sound);
-      }
+      $("input:radio[name=difficulty]").filter("[value="+items.habitica_todo_difficulty+"]").trigger("click");
+      $("input:radio[name=show_options]").filter("[value="+items.habitica_todo_show_options+"]").trigger("click");
+      $("input:radio[name=autoclose_tab]").filter("[value="+items.habitica_todo_autoclose_tab+"]").trigger("click");
 
       // Set correct icon on load
       validate_and_update_icon('user_id',   $('#user_id').val());
@@ -89,9 +63,11 @@ function validate_and_update_icon(id, string) {
     if (/^[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{12}$/.test(string)) {
       // Regex pass, use a check mark
       $('#'+id+'_icon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+      $('#'+id+'_form').removeClass('has-error').addClass('has-success');
     } else {
       // Regex fail, use an X
       $('#'+id+'_icon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+      $('#'+id+'_form').removeClass('has-success').addClass('has-error');
     }
 }
 
