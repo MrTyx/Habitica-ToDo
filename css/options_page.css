@@ -1,11 +1,18 @@
+html {
+    height: 100%;
+}
+
 body {
-  /*http://uigradients.com/
-    Royal
-  */
+  /* http://uigradients.com/ - Royal */
   background: -webkit-linear-gradient(to top, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin: 0px;
-  padding: 10px;
+  padding-top: 30px;
+
+  /* http://stackoverflow.com/questions/2869212/css3-gradient-background-set-on-body-doesnt-stretch-but-instead-repeats */
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 #questions {
   padding-left: 20px;
