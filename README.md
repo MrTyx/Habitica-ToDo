@@ -10,6 +10,10 @@ Notifications Sounds
 + Success_3.mp3 https://notificationsounds.com/message-tones/all-eyes-on-me-465
 + Success_4.mp3 https://notificationsounds.com/message-tones/youve-been-informed-345
 + Success_5.mp3 https://notificationsounds.com/wake-up-tones/arpeggio-467
++ Success_6.mp3 http://lifehacker.com/5931463/make-your-notifications-less-intrusive-with-these-soothing-alerts
++ Success_7.mp3 http://lifehacker.com/5931463/make-your-notifications-less-intrusive-with-these-soothing-alerts
++ Success_8.mp3 http://lifehacker.com/5931463/make-your-notifications-less-intrusive-with-these-soothing-alerts
+
 
 Chrome Extension Icons
 + Gregor Cresnar http://www.flaticon.com/free-icon/chat_126499
