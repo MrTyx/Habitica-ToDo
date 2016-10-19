@@ -64,15 +64,14 @@ function prepare_form(items) {
       .filter("[value="+items.habitica_todo_difficulty+"]")
       .trigger("click");
 
+
     //
     if (items.habitica_todo_add_days != '') {
-      var date = new Date();
-      date.setDate(
-        // I have no idea why I need to -1 here.
-        date.getDate() + parseInt(items.habitica_todo_add_days) - 1
-      );
-      $("#date").val(date.getFullYear()+'/'+ (date.getMonth()+1)+'/'+date.getDate());
+      $("#date").val(moment().add(items.habitica_todo_add_days, 'days').format('YYYY/MM/DD'));
     }
+    console.log(moment($("#date").val()));
+    console.log(moment($("#date").val()).utc());
+    console.log(moment($("#date").val()).utc().toISOString());
 
     $("#date").datepicker({
       format: "yyyy/mm/dd",
@@ -160,16 +159,9 @@ function post_data(items){
 
   // Adjust date from local timezone to UTC, then to an ISOString when posted
   if (items.due_date != '') {
-    var due_date = new Date(items.due_date);
-    items.due_date = new Date(Date.UTC(
-      due_date.getFullYear(),
-      due_date.getMonth(),
-      due_date.getDate(),
-      due_date.getHours(),
-      due_date.getMinutes(),
-      due_date.getSeconds(),
-      due_date.getMilliseconds()
-    )).toISOString();
+    items.due_date = moment(
+      $("#date").val()
+    ).utc().toISOString();
   }
 
   // Build the string
