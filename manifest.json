@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Habitica ToDo",
-  "version": "3.1",
+  "version": "3.2",
   "description": "Create a Habitica ToDo from current tab url",
   "icons": {
     "16": "images/icon16.png",
